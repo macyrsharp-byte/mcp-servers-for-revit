@@ -60,10 +60,14 @@ jobs:
         run: msbuild mcp-servers-for-revit.sln -p:Configuration="Release R24" -restore
 
       - name: Build Revit 2025 (.NET 8)
-        run: dotnet build mcp-servers-for-revit.sln -c "Release R25"
+        run: |
+          dotnet build plugin/RevitMCPPlugin.csproj -c "Release R25"
+          dotnet build commandset/RevitMCPCommandSet.csproj -c "Release R25"
 
       - name: Build Revit 2026 (.NET 8)
-        run: dotnet build mcp-servers-for-revit.sln -c "Release R26"
+        run: |
+          dotnet build plugin/RevitMCPPlugin.csproj -c "Release R26"
+          dotnet build commandset/RevitMCPCommandSet.csproj -c "Release R26"
 
       # ---------------------------------------------------------------
       # Create Release Assets
